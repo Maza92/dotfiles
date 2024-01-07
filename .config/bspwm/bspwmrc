@@ -43,7 +43,7 @@ bspc rule -a dolphin desktop='^3' follow=on focus=on
 
 killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager bspc
 
-xsettingsd --config=/home/luis/.config/bspwm/xsettingsd &
+xsettingsd --config=~/.config/bspwm/xsettingsd &
 
 sxhkd &
 
@@ -55,7 +55,5 @@ bash ~/.fehbg
 ~/.config/polybar/launch.sh &
 picom &
 
-sudo -S <<< 'edison12' sql-service --disable
-sudo sqlSservice --disable
-sudo modprobe -r psmouse
+
 
