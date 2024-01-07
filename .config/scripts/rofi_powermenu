@@ -1,0 +1,66 @@
+
+#!/usr/bin/env bash
+
+# Options
+option_1="" # Symbol for Logout
+option_2="" # Symbol for Reboot
+option_3="" # Symbol for Shutdown
+
+# Confirmation symbols
+yes=""
+no=""
+
+# Rofi CMD
+rofi_cmd() {
+    rofi -dmenu \
+        -p "Select an option" \
+        -theme "$HOME/.config/rofi/powermenu.rasi"
+}
+
+# Pass variables to rofi dmenu
+run_rofi() {
+    echo -e "$option_1\n$option_2\n$option_3" | rofi_cmd
+}
+
+# Confirmation CMD
+confirm_cmd() {
+    rofi -dmenu \
+        -p 'Confirmation' \
+        -mesg 'Are you Sure?' \
+        -theme "$HOME/.config/rofi/confirm.rasi"
+}
+
+# Ask for confirmation
+confirm_exit() {
+    echo -e "$yes\n$no" | confirm_cmd
+}
+
+# Confirm and execute
+confirm_run () {    
+    selected="$(confirm_exit)"
+    if [[ "$selected" == "$yes" ]]; then
+        eval "$1"
+    else
+        exit
+    fi 
+}
+
+# Execute Command
+run_cmd() {
+    if [[ "$1" == "$option_1" ]]; then
+        confirm_run 'betterlockscreen --lock'
+    elif [[ "$1" == "$option_2" ]]; then
+        confirm_run 'systemctl reboot'
+    elif [[ "$1" == "$option_3" ]]; then
+        confirm_run 'systemctl poweroff'
+    fi
+}
+
+# Actions
+chosen="$(run_rofi)"
+case "$chosen" in
+    "$option_1" | "$option_2" | "$option_3")
+        run_cmd "$chosen"
+        ;;
+esac
+

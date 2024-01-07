@@ -1,0 +1,104 @@
+super + Return
+  st 
+
+super + e 
+  dolphin 
+
+super + shift + Return
+  ~/Documentos/st-float/st
+
+alt + F1
+  rofi -show drun -theme ~/.config/rofi/launcher.rasi
+
+super + r
+	rofi -show run -theme ~/.config/rofi/runner.rasi
+
+super + p
+	~/.config/scripts/bspcolorpicker
+
+super + s 
+  ~/.config/scripts/bspscreenshot
+
+super + x 
+  ~/.config/scripts/rofi_powermenu
+
+ctrl + alt + {n,r,h}
+  st -e {nvim,ranger,htop}
+
+Print
+	~/.config/scripts/bspscreenshot --now
+
+ctrl + Print
+	~/.config/scripts/bspscreenshot --win
+
+super + Print
+	~/.config/scripts/bspscreenshot --area
+
+XF86MonBrightness{Up,Down}
+	brightnessctl s 50{+,-}
+	
+XF86Audio{RaiseVolume,LowerVolume}
+	amixer sset Master{ 5%+, 5%-}
+
+XF86Audio{Next,Prev,Play,Stop}
+	mpc {next,prev,toggle,stop}
+
+super + {_,shift + }c
+	bspc node -{c,k}
+
+ctrl + alt + Escape
+    xkill
+
+ctrl + shift + {q,r}
+	bspc {quit,wm -r}
+	
+super + Escape
+	pkill -USR1 -x sxhkd
+
+ctrl + alt + {Left,Right}
+	bspc desktop -f {prev.local,next.local}
+
+super + {_,shift + }{1-8}
+	bspc {desktop -f,node -d} '^{1-8}' '--follow'
+
+super + ctrl + shift + {Left,Right}
+	bspc node -d {prev,next} '--follow'
+
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+super + alt + shift + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+super + control + {Left,Right,Up,Down}
+	bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
+	
+super + alt + {Left,Right,Up,Down}
+	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
+
+super + {h,v,q}
+	bspc node -p {east,south,cancel}
+
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+super + l
+	bspc desktop -l next
+
+super + f
+    bspc node -t "~"fullscreen
+
+super + space
+    bspc node -t "~"{floating,tiled}
+
+super + shift + space
+    bspc node -t "~"{pseudo_tiled,tiled}
+
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+alt + {_,shift + }Tab
+	bspc node -f {next.local,prev.local}
+
+super + {Tab,grave}
+	bspc {node,desktop} -f last

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+xrandr --output eDP --mode 1366x768 --pos 0x0 --output HDMI-A-0 --mode 1280x1024 --pos 0x768 --above eDP
+
+default_workspaces() {
+	for monitor in `xrandr -q | grep -w 'connected' | cut -d' ' -f1`; do
+		bspc monitor "$monitor" -d '' '' '' '' '' '' '' ''
+	done
+}
+
+two_monitors_workspaces() {
+	# change these values according to your system
+	# you can use `xrandr -q` to get the names of monitors
+	INTERNAL_MONITOR="eDP"
+	EXTERNAL_MONITOR="HDMI-A-0"
+	if [[ $(xrandr -q | grep "${EXTERNAL_MONITOR} connected") ]]; then
+		bspc monitor "$EXTERNAL_MONITOR" -d '1' '2' '3' '4'
+		bspc monitor "$INTERNAL_MONITOR" -d '5' '6' '7' '8'
+		bspc wm -O "$EXTERNAL_MONITOR" "$INTERNAL_MONITOR"
+	else
+		bspc monitor "$INTERNAL_MONITOR" -d '' '' '' '' '' '' '' ''
+	fi
+}
+
+two_monitors_workspaces
+
+bspc config border_width 2
+bspc config window_gap 5
+bspc config split_ratio 0.50
+bspc config focus_follows_pointer true 
+
+bspc config focused_border_color "#89b4fa"
+bspc config normal_border_color "#313244"
+
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config single_monocle false 
+
+bspc rule -a St desktop='^1' follow=on focus=on
+bspc rule -a st-256color  state=floating follow=on focus=on
+bspc rule -a firefox desktop='^5' follow=on focus=on
+bspc rule -a dolphin desktop='^3' follow=on focus=on
+
+killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager bspc
+
+xsettingsd --config=/home/luis/.config/bspwm/xsettingsd &
+
+sxhkd &
+
+ksuperkey -e 'Super_L=Alt_L|F1' &
+ksuperkey -e 'Super_R=Alt_L|F1' &
+
+bash ~/.fehbg
+
+~/.config/polybar/launch.sh &
+picom &
+
+sudo -S <<< 'edison12' sql-service --disable
+sudo sqlSservice --disable
+sudo modprobe -r psmouse
+

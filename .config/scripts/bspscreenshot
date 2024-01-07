@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Directorio para guardar las capturas de pantalla
+dir="$HOME/Imágenes"
+
+# Crear directorio si no existe
+if [[ ! -d "$dir" ]]; then
+	mkdir -p "$dir"
+fi
+
+# Función para tomar captura de ventana activa
+shotwin () {
+	maim -u -f png -i "$(xdotool getactivewindow)" > "$dir/Screenshot_$(date +%Y-%m-%d-%H-%M-%S).png"
+}
+
+# Función para tomar captura de área seleccionada
+shotarea () {
+	maim -u -f png -s -b 2 -c 0.35,0.55,0.85,0.25 -l > "$dir/Screenshot_$(date +%Y-%m-%d-%H-%M-%S).png"
+}
+
+# Función para tomar captura de pantalla actual
+shotnow () {
+	maim -u -f png > "$dir/Screenshot_$(date +%Y-%m-%d-%H-%M-%S).png"
+}
+
+# Ejecutar según la opción proporcionada
+if [[ "$1" == "--now" ]]; then
+	shotnow
+elif [[ "$1" == "--win" ]]; then
+	shotwin
+elif [[ "$1" == "--area" ]]; then
+	shotarea
+else
+	echo -e "Opciones disponibles: --now --win --area"
+fi
+
+exit 0
