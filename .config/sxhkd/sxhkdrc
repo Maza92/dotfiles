@@ -5,7 +5,7 @@ super + e
   dolphin 
 
 super + shift + Return
-  ~/Documentos/st-float/st
+  ~/Documentos/float/st
 
 alt + F1
   rofi -show drun -theme ~/.config/rofi/launcher.rasi
@@ -64,7 +64,7 @@ super + {_,shift + }{1-8}
 super + ctrl + shift + {Left,Right}
 	bspc node -d {prev,next} '--follow'
 
-super + {_,shift + }{Left,Down,Up,Right}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 super + alt + shift + {Left,Down,Up,Right}
