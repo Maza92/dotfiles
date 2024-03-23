@@ -58,8 +58,11 @@ super + Escape
 ctrl + alt + {Left,Right}
 	bspc desktop -f {prev.local,next.local}
 
-super + {_,shift + }{1-8}
-	bspc {desktop -f,node -d} '^{1-8}' '--follow'
+super + {1-8}
+	/home/luis/.config/scripts/mouse.sh {1-8}
+
+super + shift + {1-8}
+  bspc node -d '^{1-8}' '--follow'
 
 super + ctrl + shift + {Left,Right}
 	bspc node -d {prev,next} '--follow'

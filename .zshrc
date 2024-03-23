@@ -9,6 +9,8 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 export ZSH=$HOME/.oh-my-zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -122,4 +124,4 @@ alias lt='exa --tree --level=2'                                         # tree
 alias cat='bat'
 #To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-rxfetch
+# rxfetch

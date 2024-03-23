@@ -48,7 +48,7 @@ confirm_run () {
 # Execute Command
 run_cmd() {
     if [[ "$1" == "$option_1" ]]; then
-        confirm_run 'betterlockscreen --lock'
+        confirm_run 'bspc quit'
     elif [[ "$1" == "$option_2" ]]; then
         confirm_run 'systemctl reboot'
     elif [[ "$1" == "$option_3" ]]; then
