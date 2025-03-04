@@ -1,0 +1,45 @@
+/*---+---+---+---+---+---+---+
+ | C | O | L | O | U | R | S |
+ +---+---+---+---+---+---+---*/
+
+
+@media (prefers-color-scheme: dark) { :root {
+  
+  /* These colours are (mainly) used by the
+     Container Tabs Plugin */
+  
+  --uc-identity-colour-blue:      {{ primary }};
+  --uc-identity-colour-turquoise: {{ secondary }};
+  --uc-identity-colour-green:     {{ primaryFixedDim }};
+  --uc-identity-colour-yellow:    {{ tertiaryFixedDim }};
+  --uc-identity-colour-orange:    {{ secondaryFixedDim }};
+  --uc-identity-colour-red:       {{ error }};
+  --uc-identity-colour-pink:      {{ onSecondaryFixed }};
+  --uc-identity-colour-purple:    {{ tertiary }};
+
+  --uc-base-colour:               {{ background }};
+  --uc-highlight-colour:          {{ surfaceContainerHighest }};
+  --uc-inverted-colour:           {{ onBackground }};
+  --uc-muted-colour:              {{ surfaceVariant }};
+  --uc-accent-colour:             var(--uc-identity-colour-purple);
+    
+}}
+
+
+@media (prefers-color-scheme: light) { :root {
+  --uc-identity-colour-blue:      {{ primaryFixed }};
+  --uc-identity-colour-turquoise: {{ secondaryFixed }};
+  --uc-identity-colour-green:     {{ primaryContainer }};
+  --uc-identity-colour-yellow:    {{ tertiaryContainer }};
+  --uc-identity-colour-orange:    {{ secondaryContainer }};
+  --uc-identity-colour-red:       {{ error }};
+  --uc-identity-colour-pink:      {{ onSecondaryFixedVariant }};
+  --uc-identity-colour-purple:    {{ onTertiaryFixedVariant }};
+
+  --uc-base-colour:               {{ background }};
+  --uc-highlight-colour:          {{ tertiary }};
+  --uc-inverted-colour:           {{ onBackground }};
+  --uc-muted-colour:              {{ surfaceVariant }};
+  --uc-accent-colour:             var(--uc-identity-colour-purple);
+    
+}}
