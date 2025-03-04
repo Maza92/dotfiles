@@ -1,5 +1,7 @@
 <p align="center">
-  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Iosevka&weight=900&size=30&pause=1000&center=true&vCenter=true&width=435&lines=Ignis+dotfiles)](https://git.io/typing-svg)
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Iosevka&weight=900&size=30&pause=1000&center=true&vCenter=true&width=435&lines=Ignis+dotfiles)](https://git.io/typing-svg)
+
 </p>
 
 ## Description
